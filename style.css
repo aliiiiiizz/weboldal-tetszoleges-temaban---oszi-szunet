@@ -3,12 +3,14 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 body {
   font-family: Arial, sans-serif;
-  background-color: #f8f7f3;
+  background-color: #f2ebe5;
   color: #20382e;
   line-height: 1.7;
 }
+
 main {
   display: grid;
   grid-template-columns: 3fr 1fr;
@@ -22,27 +24,29 @@ main {
   margin: 40px auto;
   padding: 0 20px;
 }
+
 header {
   grid-area: h;
-  background-color: #20382e;
+  background-color: #2b262d;
   color: white;
   text-align: center;
   padding: 45px 20px;
 }
 
 header h1 {
+  color: white;
   font-size: 38px;
   margin-bottom: 10px;
 }
 
 header p {
   font-size: 16px;
-  color: #d5dfd5;
+  color: #f2ebe5;
 }
 
 nav {
   grid-area: n;
-  background-color: #54745b;
+  background-color: #647295;
   padding: 15px 20px;
 }
 
@@ -51,7 +55,7 @@ nav ul {
   justify-content: center;
   gap: 35px;
   list-style: none;
-  flex-wrap: wrap;
+  flex-wrap: wrap; /* ha nem férnek el egy sorban, új sorba törnek */
 }
 
 nav a {
@@ -62,13 +66,15 @@ nav a {
 }
 
 nav a:hover {
-  text-decoration: underline;
+  color: #f2c6d8;
+  text-decoration: none;
 }
 
 main > article {
   grid-area: ar;
   min-width: 0;
 }
+
 section {
   background-color: white;
   padding: 25px;
@@ -78,7 +84,7 @@ section {
 section h2 {
   font-size: 28px;
   margin-bottom: 20px;
-  color: #20382e;
+  color: #9f496e;
 }
 
 section h3 {
@@ -104,8 +110,6 @@ section ul {
   margin-top: 15px;
 }
 
-/* NÉGY ÉVSZAK - KÉPEK */
-
 .evszakok {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -113,7 +117,7 @@ section ul {
 }
 
 .evszakok article {
-  background-color: #f5f7f3;
+  background-color: #f2ebe5;
   padding: 15px;
   width: 100%;
   min-width: 0;
@@ -137,16 +141,15 @@ section ul {
   margin-bottom: 0;
 }
 
-/* JOBB OLDALI ASIDE */
-
 aside {
   grid-area: as;
-  background-color: #e4ecdf;
+  background-color: #e6dce4;
   padding: 25px;
   align-self: start;
 }
 
 aside h2 {
+  color: #9f496e;
   font-size: 24px;
   margin-bottom: 15px;
 }
@@ -163,11 +166,9 @@ aside p {
   margin-bottom: 15px;
 }
 
-/* LÁBLÉC */
-
 footer {
   grid-area: f;
-  background-color: #20382e;
+  background-color: #2b262d;
   color: white;
   text-align: center;
   padding: 25px;
@@ -177,18 +178,86 @@ footer p {
   font-size: 14px;
 }
 
-/* Galéria */
-
+/*galeria.html*/
 .galeria {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
 }
 
 .galeria img {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 8px;
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
 }
 
+@media (max-width: 900px) {
+  main {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "ar"
+      "as";
+  }
+
+  nav ul {
+    gap: 15px;
+  }
+
+  .evszakok {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .galeria {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  header {
+    padding: 25px 15px;
+  }
+
+  header h1 {
+    font-size: 28px;
+  }
+
+  nav ul {
+    flex-direction: column; /* kis képernyőn a menüpontok egymás alá kerülnek */
+    align-items: center;
+    gap: 10px;
+  }
+
+  main {
+    margin: 20px auto;
+    padding: 0 15px;
+  }
+
+  section {
+    padding: 15px;
+  }
+
+  section h2 {
+    font-size: 23px;
+  }
+
+  section > img {
+    height: 230px;
+  }
+
+  .evszakok {
+    grid-template-columns: 1fr;
+  }
+
+  .galeria {
+    grid-template-columns: 1fr;
+  }
+
+  .galeria img {
+    height: 200px;
+  }
+
+  aside {
+    padding: 15px;
+  }
+}
